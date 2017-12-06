@@ -11,4 +11,5 @@ import javax.ejb.Local;
 public interface ModuleManagerLocal {
     ModuleOppgave getModuleOppgave(int id);
     boolean saveModuleOppgave(ModuleOppgave m);
+    boolean updateModuleOppgave(ModuleOppgave m);
 }

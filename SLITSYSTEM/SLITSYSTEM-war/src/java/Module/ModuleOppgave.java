@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity
 public class ModuleOppgave implements Serializable{
     @Id
-    @GeneratedValue 
+    @Column
     private int ModuleOppgaveID;
     @Column
     private String task;
@@ -22,8 +22,8 @@ public class ModuleOppgave implements Serializable{
     @Column 
     private String deadline;
 
-    public ModuleOppgave(String task, String Criterias, String deadline) {
- 
+    public ModuleOppgave(int ModuleOppgaveID, String task, String Criterias, String deadline) {
+        this.ModuleOppgaveID = ModuleOppgaveID;
         this.task = task;
         this.Criterias = Criterias;
         this.deadline = deadline;

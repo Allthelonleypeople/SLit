@@ -2,7 +2,7 @@ package Module;
 
 //import Module.Module;
 
-import Module.ModuleOppgave;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,6 +32,18 @@ public class ModuleManagerBean implements ModuleManagerLocal {
         }
         return true;
     }
+    
+    @Override
+    public boolean updateModuleOppgave(ModuleOppgave m){
+        ModuleOppgave existing = getModuleOppgave(m.getModuleOppgaveID());
+        if (existing != null) {
+            em.merge(m);
+            em.flush();
+        } else {
+            return false;
+    }
+    return true;
+}
 }
     
   
