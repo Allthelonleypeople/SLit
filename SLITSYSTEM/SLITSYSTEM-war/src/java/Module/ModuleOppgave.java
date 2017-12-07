@@ -4,7 +4,6 @@ package Module;
 import javax.persistence.*;
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
@@ -28,6 +27,8 @@ public class ModuleOppgave implements Serializable{
         this.Criterias = Criterias;
         this.deadline = deadline;
     }
+    public ModuleOppgave()
+    {}
 
     public int getModuleOppgaveID() {
         return ModuleOppgaveID;

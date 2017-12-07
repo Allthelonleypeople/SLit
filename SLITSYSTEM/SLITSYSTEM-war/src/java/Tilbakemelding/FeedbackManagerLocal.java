@@ -12,6 +12,7 @@ import javax.ejb.Local;
 public interface FeedbackManagerLocal {
     Feedback getFeedback(int id);
     boolean saveFeedback(Feedback f);
-    Feedback getFeedback(String primaryChunk);
+    boolean updateFeedback(Feedback f);
+ 
    
 }

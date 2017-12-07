@@ -19,53 +19,74 @@ public class OppgaveServlet extends HttpServlet {
 
     private void newOppgaveServlet (HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
 
-        if (request.getParameter("ModuleOppgave") == null) {
+        if (null == request.getParameter("ModuleOppgave")) {
             String errorMessage = "Velg modul i lista!";
             request.getSession().setAttribute("errorMessage", errorMessage);
             response.sendRedirect("NewModule.jsp");
             
-        } else if (request.getParameter("ModuleOppgave").equals("1")) {
-            int ModuleOppgaveID = 1;
-            getParameters(ModuleOppgaveID, request, response);
-            
-        } else if (request.getParameter("ModuleOppgave").equals("2")) {
-            int ModuleOppgaveID = 2;
-            getParameters(ModuleOppgaveID, request, response);
-            
-        } else if (request.getParameter("ModuleOppgave").equals("3")) {
-            int ModuleOppgaveID = 3;
-            getParameters(ModuleOppgaveID, request, response);
-            
-        } else if (request.getParameter("ModuleOppgave").equals("4")) {
-            int ModuleOppgaveID = 4;
-            getParameters(ModuleOppgaveID, request, response);
-            
-        } else if (request.getParameter("ModuleOppgave").equals("5")) {
-            int ModuleOppgaveID = 5;
-            getParameters(ModuleOppgaveID, request, response);
-            
-        } else if (request.getParameter("ModuleOppgave").equals("6")) {
-            int ModuleOppgaveID = 6;
-            getParameters(ModuleOppgaveID, request, response);
-        }
-          else if (request.getParameter("ModuleOppgave").equals("7")) {
-            int ModuleOppgaveID = 7;
-            getParameters(ModuleOppgaveID, request, response);
-        
-        } 
-          else if (request.getParameter("ModuleOppgave").equals("8")) {
-            int ModuleOppgaveID = 8;
-            getParameters(ModuleOppgaveID, request, response);
-        
-        } 
-          else if (request.getParameter("ModuleOppgave").equals("9")) {
-            int ModuleOppgaveID = 9;
-            getParameters(ModuleOppgaveID, request, response);
-
-        } 
-            else if (request.getParameter("ModuleOppgave").equals("10")) {
-            int ModuleOppgaveID = 10;
-            getParameters(ModuleOppgaveID, request, response);
+        } else switch (request.getParameter("ModuleOppgave")) {
+            case "1":
+                {
+                    int ModuleOppgaveID = 1;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "2":
+                {
+                    int ModuleOppgaveID = 2;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "3":
+                {
+                    int ModuleOppgaveID = 3;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "4":
+                {
+                    int ModuleOppgaveID = 4;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "5":
+                {
+                    int ModuleOppgaveID = 5;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "6":
+                {
+                    int ModuleOppgaveID = 6;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "7":
+                {
+                    int ModuleOppgaveID = 7;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "8":
+                {
+                    int ModuleOppgaveID = 8;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "9":
+                {
+                    int ModuleOppgaveID = 9;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "10":
+                {
+                    int ModuleOppgaveID = 10;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            default:
+                break;
         }
 
     

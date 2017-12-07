@@ -7,6 +7,7 @@ package Tilbakemelding;
 
      
        
+
         import javax.ejb.EJB;
         import javax.servlet.ServletException;
         import javax.servlet.annotation.WebServlet;
@@ -14,54 +15,169 @@ package Tilbakemelding;
         import javax.servlet.http.HttpServletRequest;
         import javax.servlet.http.HttpServletResponse;
         import java.io.IOException;
-        import java.io.PrintWriter;
+        import java.text.ParseException;
+        import javax.servlet.http.HttpSession;
+        import users.Bruker;
 
 
-@WebServlet ("/FeedbackServlet")
+@WebServlet(name = "newFeedback", urlPatterns = {"/newFeedback"})
 
 
 public class FeedbackServlet extends HttpServlet {
 
-    @EJB
-    FeedbackManagerLocal manager;
-
-    private void newFeedback (HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
+  
+         private void getParameters(int FeedbackId, HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
+     
+        
+     
         String comment = request.getParameter("comment");
         String rating = request.getParameter("rating");
-        String email = request.getParameter("email");
-        String ModuleOppgaveID = request.getParameter("ModuleOppgaveID");
- 
         
+        HttpSession session = request.getSession();
+        Bruker loggedInUser = (Bruker) session.getAttribute("loggedInUser");
         
-       
         
 
-        Feedback f = new Feedback(comment, rating, email, ModuleOppgaveID);
-        if(manager.saveFeedback(f) == true){
-            out.print("Tilbakemelding opprettet ");
-            response.sendRedirect("/SLITSYSTEM-war/ModuleListe.jsp");
-        } else if (manager.saveFeedback(f) == false){
-            out.print("Feil, prøv igjen ");
+     Feedback f = new Feedback(FeedbackId, comment, rating);
+
+               try {
+            saveDatabase(f, request, response);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (ServletException se) {
+            se.printStackTrace();
         }
-        
+    
+
+
+      }
+    
+    private void newFeedback (HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
+
       
 
+        if (null == request.getParameter("Feedback")) {
+            String errorMessage = "Velg modul i lista!";
+            request.getSession().setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("NewModule.jsp");
+            
+        } else switch (request.getParameter("Feedback")) {
+            case "1":
+                {
+                    int FeedbackId = 1;
+                    getParameters(FeedbackId, request, response);
+                    break;
+                }
+            case "2":
+                {
+                    int ModuleOppgaveID = 2;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "3":
+                {
+                    int ModuleOppgaveID = 3;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "4":
+                {
+                    int ModuleOppgaveID = 4;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "5":
+                {
+                    int ModuleOppgaveID = 5;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "6":
+                {
+                    int ModuleOppgaveID = 6;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "7":
+                {
+                    int ModuleOppgaveID = 7;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "8":
+                {
+                    int ModuleOppgaveID = 8;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "9":
+                {
+                    int ModuleOppgaveID = 9;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            case "10":
+                {
+                    int ModuleOppgaveID = 10;
+                    getParameters(ModuleOppgaveID, request, response);
+                    break;
+                }
+            default:
+                break;
+        }
     }
+
+    
+
+    @EJB
+    private
+    FeedbackManagerLocal manager;
+
+    /**
+     * @param m
+     * @param response
+     * @throws ServletException
+     * @throws IOException      Lagrer modulen i databasen
+     */
+
+    private void saveDatabase(Feedback f, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (manager.updateFeedback(f)) {
+            request.getSession().setAttribute("comment", f.getComment());
+            request.getSession().setAttribute("rating", f.getRating());
+            response.sendRedirect("/SLITSYSTEM-war/ModuleListe.jsp");
+        } else {
+            manager.saveFeedback(f);
+            request.getSession().setAttribute("comment", f.getComment());
+            request.getSession().setAttribute("rating", f.getRating());
+            response.sendRedirect("/SLITSYSTEM-war/ModuleListe.jsp");
+        }
+    }
+
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        newFeedback(request, response);
+        try {
+            newFeedback(request, response);
+        } catch (ParseException e) {
+        }
     }
 
-    
+    /**
+     * Standard Java metode for HTTP Post
+     *
+     * @param request  Et HTTP Request objekt
+     * @param response Et HTTP Response objekt
+     * @throws ServletException Standard java exception
+     * @throws IOException      Standard java exception
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        newFeedback(request, response);
+        try {
+            newFeedback(request, response);
+        } catch (ParseException e) {
+        }
     }
 }
-
