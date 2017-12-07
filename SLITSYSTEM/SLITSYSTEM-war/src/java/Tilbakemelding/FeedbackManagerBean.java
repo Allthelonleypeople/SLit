@@ -6,6 +6,8 @@
 package Tilbakemelding;
 
 
+//import Feedback.FeedbackManagerLocal;
+//import Tilbakemelding.Feedback;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,27 +19,14 @@ public class FeedbackManagerBean implements FeedbackManagerLocal {
     @PersistenceContext
     private EntityManager em;
 
-    /**
-     *
-     */
     public FeedbackManagerBean(){
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     @Override
     public Feedback getFeedback(int id) {
         return em.find(Feedback.class, id);
     }
 
-    /**
-     *
-     * @param f
-     * @return
-     */
     @Override
     public boolean saveFeedback(Feedback f){
         Feedback existing = getFeedback(f.getFeedbackId());
@@ -48,23 +37,9 @@ public class FeedbackManagerBean implements FeedbackManagerLocal {
         }
         return true;
     }
-        
-    /**
-     *
-     * @param f
-     * @return
-     */
-    @Override
-    public boolean updateFeedback(Feedback f){
-        Feedback existing = getFeedback(f.getFeedbackId());
-        if (existing != null) {
-            em.merge(f);
-            em.flush();
-        } else {
-            return false;
-    }
-    return true;
+       @Override
+    public Feedback getFeedback(String comment) {
+        return em.find(Feedback.class, comment);
     }
 }
-   
 
