@@ -37,23 +37,21 @@ ResultSet resultSet = null;
 <td><b>Oppgavenummer</b></td>
 <td><b>Oppgave</b></td>
 <td><b>Kriterier</b></td>
-<td><b>Deadline</b></td>
 </tr>
 <%
 try{ 
 connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
 statement=connection.createStatement();
-String sql ="SELECT * FROM ModuleOppgave";
+String sql ="SELECT * FROM Bruker";
 
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 %>
 <tr bgcolor="#FF888">
     
-<td><%=resultSet.getString("ModuleOppgaveID") %></td>
-<td><%=resultSet.getString("task") %></td>
-<td><%=resultSet.getString("Criterias") %></td>
-<td><%=resultSet.getString("Deadline") %></td>
+<td><%=resultSet.getString("email") %></td>
+<td><%=resultSet.getString("fName") %></td>
+<td><%=resultSet.getString("lName") %></td>
 
 </tr>
 
@@ -65,10 +63,3 @@ e.printStackTrace();
 }
 %>
 </table>
-
-<a href="NewModule.jsp">Opprett ny modul</a> <br><br>
-<a href="giTilbakemelding.jsp">Gi tilbakemelding</a><br><br>
-
-<a href="lesTilbakemeldinger.jsp">les tilbakemelding</a><a <br><br>
-   <a href="skrivModuler.jsp">teste litt</a>
-    <a href="studentList.jsp">Studentlistet</a>
