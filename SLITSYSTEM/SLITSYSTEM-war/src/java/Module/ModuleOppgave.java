@@ -4,7 +4,6 @@ package Module;
 import javax.persistence.*;
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
@@ -12,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 public class ModuleOppgave implements Serializable{
-    @Id
+    @Id //Markerer at dette feltet er PK i tabellen.
     @Column
     private int ModuleOppgaveID;
     @Column
@@ -22,13 +21,32 @@ public class ModuleOppgave implements Serializable{
     @Column 
     private String deadline;
 
+    /**
+     * Constructor for Modul
+     * @param ModuleOppgaveID
+     * @param task
+     * @param Criterias
+     * @param deadline
+     */
     public ModuleOppgave(int ModuleOppgaveID, String task, String Criterias, String deadline) {
         this.ModuleOppgaveID = ModuleOppgaveID;
         this.task = task;
         this.Criterias = Criterias;
         this.deadline = deadline;
     }
+    
+    /**
+     * Det er meningen at denne constructoren skal være tom.
+     */
+    public ModuleOppgave()
+    {
+    }
 
+    /**
+     *Herfra og ned er det bare Setters og getters
+     * for de forskjellige metodene.
+     * @return
+     */
     public int getModuleOppgaveID() {
         return ModuleOppgaveID;
     }

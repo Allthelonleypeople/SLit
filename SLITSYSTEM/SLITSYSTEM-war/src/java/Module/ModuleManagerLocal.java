@@ -1,11 +1,13 @@
 
 package Module;
 
-import Module.ModuleOppgave;
 import javax.ejb.Local;
 /**
  *
  * @author sindrethompson
+ * 
+ * Interface-klasse for Moduler. Alle metoder som er definert av inteface
+ * må også implementeres i source-koden.
  */
 @Local
 public interface ModuleManagerLocal {

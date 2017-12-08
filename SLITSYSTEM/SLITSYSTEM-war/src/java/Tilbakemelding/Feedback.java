@@ -22,26 +22,22 @@ import Module.ModuleOppgave;
 public class Feedback implements Serializable {
     
     @Id
-    @GeneratedValue
+    @Column
     private int FeedbackId;
     @Column
     private String comment;
     @Column
     private String rating;
-    @Column
-    private String email;
-    @Column
-    private String ModuleOppgaveID;
+
     
     
     public Feedback() {}
 
-    public Feedback(String comment, String rating, String email, String ModuleOppgaveID) {
+    public Feedback(int FeedbackId, String comment, String rating) {
         this.comment = comment;
         this.rating = rating;
-        this.email = email;
-        this.ModuleOppgaveID = ModuleOppgaveID;
-        
+        this.FeedbackId = FeedbackId;
+      
     }
 
     public int getFeedbackId() {
