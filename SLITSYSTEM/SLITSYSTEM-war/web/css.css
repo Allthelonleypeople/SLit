@@ -279,3 +279,11 @@ h8 {
     margin: 5px;
     text-align: center;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 2px solid black;
+}
