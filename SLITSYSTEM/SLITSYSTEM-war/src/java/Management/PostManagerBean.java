@@ -20,6 +20,11 @@ public class PostManagerBean implements PostManagerLocal {
     }
     
     @Override
+    public Poster getInfo(String info) {
+        return em.find(Poster.class, info);
+    }
+    
+    @Override
     public boolean savePost(Poster p) {
         Poster existing = getInnhold(p.getPostID());
         if (existing == null) {

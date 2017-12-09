@@ -10,6 +10,6 @@ import javax.ejb.Local;
 @Local
 public interface PostManagerLocal {
     Poster getInnhold(int id);
-    
+    Poster getInfo(String info);
     boolean savePost(Poster p);
 }

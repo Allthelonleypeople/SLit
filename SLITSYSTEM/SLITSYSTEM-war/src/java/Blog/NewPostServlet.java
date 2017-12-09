@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import Management.PostManagerLocal;
+import javax.servlet.http.HttpSession;
+import users.Bruker;
 
 @WebServlet(name = "NewPostServlet", urlPatterns = {"/NewPostServlet"})
 public class NewPostServlet extends HttpServlet {
@@ -23,8 +25,12 @@ public class NewPostServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String tittel = request.getParameter("tittel");
         String innhold = request.getParameter("innhold");
+        
+        HttpSession session = request.getSession();
+        Bruker loginUser = (Bruker) session.getAttribute("loginUser");
+        String currentUserEmail = loginUser.getEmail();
 
-        Poster p = new Poster(tittel, innhold);
+        Poster p = new Poster(currentUserEmail, tittel, innhold);
         if (manager.savePost(p) == true) {
             out.print("Din post har blitt lagret!");
             out.print("Du vil nå bli sendt tilbake til bloggen");

@@ -25,6 +25,8 @@ public class Bruker implements Serializable{
         this.lName = lName; 
         this.userType = userType; 
     }
+    
+    public Bruker(){}
 
     public String getUserType() {
         return userType;
@@ -50,8 +52,7 @@ public class Bruker implements Serializable{
         this.lName = lName;
     }
 
-    protected Bruker(){
-    }
+   
 
     public String getEmail() {
         return email;

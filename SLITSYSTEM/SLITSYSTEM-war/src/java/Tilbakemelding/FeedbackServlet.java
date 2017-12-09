@@ -41,18 +41,18 @@ public class FeedbackServlet extends HttpServlet {
         String rating = request.getParameter("rating");
         
         HttpSession session = request.getSession();
-        Bruker loggedInUser = (Bruker) session.getAttribute("loggedInUser");
+        Bruker loginUser =  (Bruker) session.getAttribute("loginUser");
+        
+        String currentUserEmail = loginUser.getEmail();
         
         
 
-     Feedback f = new Feedback(FeedbackId, comment, rating);
+     Feedback f = new Feedback(currentUserEmail, FeedbackId, comment, rating);
 
                try {
-            saveDatabase(f, request, response);
-        } catch (IOException ioe) {
+            feedbackTilDatabase(f, request, response); 
+        } catch (IOException | ServletException ioe) {
             ioe.printStackTrace();
-        } catch (ServletException se) {
-            se.printStackTrace();
         }
     
 
@@ -64,8 +64,8 @@ public class FeedbackServlet extends HttpServlet {
       
 
         if (null == request.getParameter("Feedback")) {
-            String errorMessage = "Velg modul i lista!";
-            request.getSession().setAttribute("errorMessage", errorMessage);
+            String errorM = "Velg modul i lista!";
+            request.getSession().setAttribute("errorM", errorM);
             response.sendRedirect("NewModule.jsp");
             
         } else switch (request.getParameter("Feedback")) {
@@ -147,7 +147,7 @@ public class FeedbackServlet extends HttpServlet {
      * @throws IOException      Lagrer modulen i databasen
      */
 
-    private void saveDatabase(Feedback f, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void feedbackTilDatabase(Feedback f, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (manager.updateFeedback(f)) {
             request.getSession().setAttribute("comment", f.getComment());
             request.getSession().setAttribute("rating", f.getRating());

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import Management.CommentManagerLocal;
+import javax.servlet.http.HttpSession;
+import users.Bruker;
 
 @WebServlet("NewCommentServlet")
 public class NewCommentServlet extends HttpServlet {
@@ -21,10 +23,15 @@ public class NewCommentServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         String QuestionComment = request.getParameter("QuestionComment");
-        String KommentarNavn = request.getParameter("KommentarNavn");
         String QuestionID = request.getParameter("QuestionID");
+        
+        HttpSession session = request.getSession();
+        Bruker loggedInUser = (Bruker) session.getAttribute("loginUser");
+        String currentUserEmail = loggedInUser.getEmail();
+        
+        
 
-        Comments c = new Comments(QuestionComment, KommentarNavn, QuestionID);
+        Comments c = new Comments(QuestionComment, QuestionID, currentUserEmail);
         if (manager.saveComment(c) == true) {
             out.print("Din kommentar har blir lagret!");
             out.print("Du vil nå bli sendt tilbake spørsmålssiden");

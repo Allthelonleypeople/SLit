@@ -35,7 +35,7 @@ public class NewBrukerServlet extends HttpServlet {
         if(manager.saveUser(b) == true){
             out.print("Din bruker har blitt opprettet!  ");
             out.print("Du vil nå bli videresendt til innloggingen   ");            
-            response.sendRedirect("/SLITSYSTEM-war/Registrer.html");
+            response.sendRedirect("/SLITSYSTEM-war/index.html");
         } else if (manager.saveUser(b) == false){
             out.print("Din bruker kunne ikke bli opprettet, vennligst prøv igjen ");
         }

@@ -19,7 +19,7 @@ public class OppgaveServlet extends HttpServlet {
 
     private void newOppgaveServlet (HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
 
-        if (null == request.getParameter("ModuleOppgave")) {
+        if (null == request.getParameter("-Velg modul-")) {
             String errorMessage = "Velg modul i lista!";
             request.getSession().setAttribute("errorMessage", errorMessage);
             response.sendRedirect("NewModule.jsp");

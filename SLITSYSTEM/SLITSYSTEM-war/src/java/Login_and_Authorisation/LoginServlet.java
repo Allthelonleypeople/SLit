@@ -35,16 +35,18 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("loginUser", b);
             
-            //sjekker brukertype om det er admin, lærer eller student
-            if (b.getUserType().equals("admin")) {                   
-            response.sendRedirect("/SLITSYSTEM-war/AdminMenu");
-            }
-            else if (b.getUserType().equals("teacher")) {                   
-            response.sendRedirect("/SLITSYSTEM-war/TeacherMenu");
-            } 
-            else {
-            response.sendRedirect("/SLITSYSTEM-war/StudentMenu");
-            }
+                //sjekker brukertype om det er admin, lærer eller student
+                switch (b.getUserType()) {
+                    case "admin":
+                        response.sendRedirect("/SLITSYSTEM-war/AdminMenu");
+                        break;
+                    case "teacher":
+                        response.sendRedirect("/SLITSYSTEM-war/TeacherMenu");
+                        break;
+                    default:
+                        response.sendRedirect("/SLITSYSTEM-war/Hovedmeny.html");
+                        break;
+                }
         }        
         else{
                 response.sendRedirect("/SLITSYSTEM-war/loginfeil.html");       

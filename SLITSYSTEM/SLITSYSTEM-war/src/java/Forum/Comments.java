@@ -16,15 +16,24 @@ public class Comments implements Serializable {
     @Column
     private String QuestionComment;
     @Column
-    private String KommentarNavn;
-    @Column
     private String QuestionID;
+    @Column
+    private String loginUser;
 
-    public Comments(String QuestionComment, String KommentarNavn, String QuestionID) {
+    public Comments(String QuestionComment, String QuestionID, String loginUser) {
         this.QuestionComment = QuestionComment;
-        this.KommentarNavn = KommentarNavn;
         this.QuestionID = QuestionID;
+        this.loginUser = loginUser;
     }
+
+    public String getLoginUser() {
+        return loginUser;
+    }
+
+    public void setLoginUser(String loginUser) {
+        this.loginUser = loginUser;
+    }
+    
 
     public String getQuestionComment() {
         return QuestionComment;
@@ -42,13 +51,6 @@ public class Comments implements Serializable {
         this.CommentID = CommentID;
     }
     
-    public String getKommentarNavn() {
-        return KommentarNavn;
-    }
-    
-    public void setKommentarNavn(String KommentarNavn) {
-        this.KommentarNavn = KommentarNavn;
-    }
     
     public  String QuestionID(){
         return QuestionID;

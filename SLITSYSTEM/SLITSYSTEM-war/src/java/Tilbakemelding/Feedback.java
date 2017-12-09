@@ -40,6 +40,10 @@ public class Feedback implements Serializable {
       
     }
 
+    Feedback(String currentUserEmail, int FeedbackId, String comment, String rating) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getFeedbackId() {
         return FeedbackId;
     }
