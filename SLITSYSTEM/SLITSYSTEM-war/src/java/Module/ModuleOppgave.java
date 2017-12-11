@@ -43,38 +43,66 @@ public class ModuleOppgave implements Serializable{
     }
 
     /**
-     *Herfra og ned er det bare Setters og getters
-     * for de forskjellige metodene.
+     * Herfra og ned er det bare Setters og getters
+     * for de forskjellige feltene
      * @return
      */
     public int getModuleOppgaveID() {
         return ModuleOppgaveID;
     }
-
+    
+    /**
+     *
+     * @param ModuleOppgaveID
+     */
     public void setModuleOppgaveID(int ModuleOppgaveID) {
         this.ModuleOppgaveID = ModuleOppgaveID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTask() {
         return task;
     }
 
+    /**
+     *
+     * @param task
+     */
     public void setTask(String task) {
         this.task = task;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCriterias() {
         return Criterias;
     }
 
+    /**
+     *
+     * @param Criterias
+     */
     public void setCriterias(String Criterias) {
         this.Criterias = Criterias;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDeadline() {
         return deadline;
     }
 
+    /**
+     *
+     * @param deadline
+     */
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }

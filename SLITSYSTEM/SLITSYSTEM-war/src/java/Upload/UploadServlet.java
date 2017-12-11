@@ -14,6 +14,7 @@ import Management.DeliveryManagerLocal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import users.Bruker;
 
 
@@ -55,7 +56,7 @@ public class UploadServlet extends HttpServlet {
         /**
          * 
          * Uploader byteArrayet til databasen
-         * Blir lest som en BLOB i sql
+         * Blir lagret som en BLOB i sql
          * 
          * 
          * 
@@ -68,7 +69,7 @@ public class UploadServlet extends HttpServlet {
      
     private void upload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException {
         request.setCharacterEncoding("UTF-8");
-        
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         Bruker loginUser =  (Bruker) session.getAttribute("loginUser");
         
@@ -82,15 +83,26 @@ public class UploadServlet extends HttpServlet {
                       
         
                         if (manager.updateDelivery(delivery, request, response)) {
+                            out.print("Leveringen ble oppdatert");
+                            String oppdatert = "Leveringen ble oppdatert";
+                            request.getSession().setAttribute("oppdatert", oppdatert);
+                            response.sendRedirect("Uploaded.jsp");
                         } else {
-                            
-                            if (manager.saveDelivery(delivery)) {
+                            out.print("Leveringen ble ikke oppdatert");
+                            if (manager.saveDelivery(delivery)) { 
+                                out.print("Filen ble lagret");
+                                String godStemning = "Filen ble levert";
+                                request.getSession().setAttribute("godStemning", godStemning);
+                                response.sendRedirect("Uploaded.jsp");
                             } else {
+                                out.print("Error");
+                                String errorMessage = "Velg modul i lista!";
+                                request.getSession().setAttribute("errorMessage", errorMessage); //Skriver ut melding på JSP hvis du ikke har valgt
+                                response.sendRedirect("Uploaded.jsp");    
                             }
                         }
     }
-    
-       
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

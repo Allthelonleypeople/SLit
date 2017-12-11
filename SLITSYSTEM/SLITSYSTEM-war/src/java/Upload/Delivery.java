@@ -11,9 +11,9 @@ package Upload;
  *
  * @author krish
  */
-//import javax.persistence.*;
+
+
 import java.io.Serializable;
-//import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,6 +47,8 @@ public class Delivery implements Serializable{
     }
     
     public Delivery(){}
+
+  
 
 
     public String getTitle() {
@@ -88,6 +90,8 @@ public class Delivery implements Serializable{
     public void setLoginUser(String loginUser) {
         this.loginUser = loginUser;
     }
+
+ 
     
     
 
