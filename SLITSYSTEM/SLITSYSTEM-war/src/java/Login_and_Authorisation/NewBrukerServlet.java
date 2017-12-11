@@ -26,8 +26,8 @@ public class NewBrukerServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("passWord");
-        String fName = request.getParameter("firstName");
-        String lName = request.getParameter("lastName");
+        String fName = request.getParameter("fName");
+        String lName = request.getParameter("lName");
         String userType = request.getParameter("userType"); 
         
 

@@ -38,10 +38,10 @@ public class LoginServlet extends HttpServlet {
                 //sjekker brukertype om det er admin, lærer eller student
                 switch (b.getUserType()) {
                     case "admin":
-                        response.sendRedirect("/SLITSYSTEM-war/AdminMenu");
+                        response.sendRedirect("/SLITSYSTEM-war/HovedmenyAdmin.jsp");
                         break;
                     case "teacher":
-                        response.sendRedirect("/SLITSYSTEM-war/TeacherMenu");
+                        response.sendRedirect("/SLITSYSTEM-war/HovedmenyTeacher.jsp");
                         break;
                     default:
                         response.sendRedirect("/SLITSYSTEM-war/Hovedmeny.jsp");
