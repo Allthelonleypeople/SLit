@@ -28,13 +28,12 @@ public class NewCommentServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Bruker loggedInUser = (Bruker) session.getAttribute("loginUser");
         String currentUserEmail = loggedInUser.getEmail();
-        
-        
 
         Comments c = new Comments(QuestionComment, QuestionID, currentUserEmail);
         if (manager.saveComment(c) == true) {
             out.print("Din kommentar har blir lagret!");
             out.print("Du vil nå bli sendt tilbake spørsmålssiden");
+            //response.setHeader("Refresh", "0; URL=FinnQID.jsp");
             response.sendRedirect("VisSporsmal.jsp");
         } else if (manager.saveComment(c) == false) {
             out.print("Kommentaren ble ikke lagret, prøv igjen..");

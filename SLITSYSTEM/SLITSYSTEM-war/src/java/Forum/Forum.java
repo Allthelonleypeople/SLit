@@ -46,9 +46,9 @@ public class Forum extends HttpServlet {
             out.println("</div>");
             out.println("<div class =\"venstre\"> </div>");
             out.println("<div class=\"midt\">");
-            out.println("<form action=\"FAQ.html\"><button class=\"button\"><span>FAQ </span></button></form>");
-            out.println("<form action=\"SporsmalKategori.html\"><button class=\"button\"><span>Kategorier </span></button></form>");
-            out.println("<form action=\"NyttSporsmal.html\"><button class=\"button\"><span>Nytt spørsmål </span></button></form>");
+            out.println("<form action=\"FAQ.jsp\"><button class=\"button\"><span>FAQ </span></button></form>");
+            out.println("<form action=\"SporsmalKategori.jsp\"><button class=\"button\"><span>Kategorier </span></button></form>");
+            out.println("<form action=\"NyttSporsmal.jsp\"><button class=\"button\"><span>Nytt spørsmål </span></button></form>");
             out.println("<form action=\"VisSporsmal.jsp\"><button class=\"button\"><span>Se spørsmål </span></button></form>");
             out.println("</div>");
             out.println("</body>");
