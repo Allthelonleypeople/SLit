@@ -15,28 +15,16 @@ public class Poster implements Serializable {
     private int PostID;
     @Column
     private String tittel;
-    @Column
+    @Column 
     private String innhold;
     @Column
     private String loginUser;
-    @Column 
-    private String informasjon;
 
     public Poster(String tittel, String innhold, String loginUser) {
         this.tittel = tittel;
         this.innhold = innhold;
         this.loginUser = loginUser;
-       // this.informasjon = informasjon;
     }
-
-    public String getInformasjon() {
-        return informasjon;
-    }
-
-    public void setInformasjon(String informasjon) {
-        this.informasjon = informasjon;
-    }
-    
 
     public String getLoginUser() {
         return loginUser;

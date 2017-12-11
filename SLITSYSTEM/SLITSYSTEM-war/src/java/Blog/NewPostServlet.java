@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import Management.PostManagerLocal;
-import javax.servlet.http.HttpSession;
-import users.Bruker;
+//import javax.servlet.http.HttpSession;
+//import users.Bruker;
 
 @WebServlet(name = "NewPostServlet", urlPatterns = {"/NewPostServlet"})
 public class NewPostServlet extends HttpServlet {
@@ -23,20 +23,21 @@ public class NewPostServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        String currentUserEmail = request.getParameter("currentUserEmail");
         String tittel = request.getParameter("tittel");
         String innhold = request.getParameter("innhold");
         
-        HttpSession session = request.getSession();
-        Bruker loginUser = (Bruker) session.getAttribute("loginUser");
-        String currentUserEmail = loginUser.getEmail();
+        //HttpSession session = request.getSession();
+        //Bruker loginUser = (Bruker) session.getAttribute("loginUser");
+        //String currentUserEmail = loginUser.getEmail();
 
-        Poster p = new Poster(currentUserEmail, tittel, innhold);
+        Poster p = new Poster(tittel, innhold, currentUserEmail);
         if (manager.savePost(p) == true) {
             out.print("Din post har blitt lagret!");
             out.print("Du vil nå bli sendt tilbake til bloggen");
-            response.sendRedirect("Blog.jsp");
+            response.sendRedirect("BlogPrivate.jsp");
         } else if (manager.savePost(p) == false) {
-            out.print("Posten ble ikke algret, prøv igjen..");
+            out.print("Posten ble ikke lagret, prøv igjen..");
         }
     }
 
