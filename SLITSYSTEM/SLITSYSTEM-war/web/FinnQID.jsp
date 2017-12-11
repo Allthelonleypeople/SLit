@@ -61,10 +61,10 @@
             <tr bgcolor="#ffffff">
                 <th width="200px">Navn</th>
                 <!--<th width="200px">Kategori</th>-->
-                <th width="500px">Spørsmål</th>
+                <th width="600px">Spørsmål</th>
             </tr>
             <tr bgcolor="ffffff">
-                <td width="200"> <%= resultSet.getString("navn")%> </td>
+                <td width="200"> <%= resultSet.getString("loginUser")%> </td>
                 <!--<td width="100"> <%//= resultSet.getString("kategori")%> </td>-->
                 <td width="600"> <%= resultSet.getString("QuestionText")%> </td>
             </tr>
@@ -75,12 +75,10 @@
         %>
         <form method="post" action="/SLITSYSTEM-war/NewCommentServlet">
             <div style = "clear:both;"></div>
-            <br>
+            
             <u2>Kommentar:</u2> <br>        
             <textarea style="resize:none" name="QuestionComment" rows="10" cols="70"></textarea> <br><br>
-            <u2>Navn:</u2> <br>
-            <input type="text" name="KommentarNavn"
-                   <br>
+            <input type="hidden" name="KommentarNavn" value="<%= resultSet.getString("loginUser")%>"
             <input type="hidden" name="QuestionID" value=<%= resultSet.getString("QuestionID")%>> <br>
             <input type="submit" value="Legg igjen kommentar">
         </form>
@@ -91,7 +89,7 @@
                     while (resultSet.next()) {
             %> 
             <tr bgcolor="#ffffff"> 
-                <td width="200"> <%= resultSet.getString("KommentarNavn")%> </td>
+                <td width="200"> <%= resultSet.getString("loginUser")%> </td>
                 <td width="600"> <%= resultSet.getString("QuestionComment")%> </td>
             </tr>
             <%

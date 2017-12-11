@@ -3,6 +3,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="users.Bruker"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -23,6 +25,7 @@
             <div class ="venstre">
             </div>
             <div class ="midt">
+
                 <%
                     String driverName = "com.mysql.jdbc.Driver";
                     String connectionUrl = "jdbc:mysql://localhost:3306/";
@@ -39,30 +42,34 @@
                     Connection connection = null;
                     Statement statement = null;
                     ResultSet resultSet = null;
+                    
+                    Bruker loggedInUser = (Bruker) session.getAttribute("loginUser");
+                    String currentUserEmail = loggedInUser.getEmail();
 
-                    //String id = request.getParameter("id");
                     connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
                     statement = connection.createStatement();
                     String sql = "SELECT email, fName, lName, password, userType, UserID, Description "
                             + "FROM Bruker, UserPage "
                             + "WHERE Bruker.email = UserPage.UserID "
-                            + "AND email = 'tar'";
+                            + "AND email = '" + currentUserEmail + "'";
 
                     resultSet = statement.executeQuery(sql);
+                    
+                    
 
                     if (!resultSet.next()) {
                         out.println("Kunne ikke opprette bruksersiden <br><br>");
                         out.println("<a href=\"Hovedmeny.jsp\">Prøv igjen</a>");
                     } else {
-
                 %>
+
                 <head>
                     <title><%= resultSet.getString("UserID")%>  </title>
                 </head>
                 <h3>Skriv inn nytt passord</h3>
                 <h5>(max 20 tegn)</h5>
                 <form method="post" action="UserPagePasswordUpdated.jsp">
-                    <textarea style="resize:none" name="NyttPassord" rows="1" cols="20" maxlength="20"></textarea>
+                    <input type="password" style="resize:none" name="NyttPassord" rows="1" cols="20" maxlength="20"></textarea>
                     <br><br>
                     <input type="submit" value="Oppdater"/>
                 </form>
@@ -71,6 +78,7 @@
                 <%
                     }
                 %>
+
             </div>
             <div class="bottomheader"></div>
         </div>

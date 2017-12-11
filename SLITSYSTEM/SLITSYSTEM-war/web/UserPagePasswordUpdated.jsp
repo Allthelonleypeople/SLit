@@ -3,6 +3,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="users.Bruker"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -40,17 +42,20 @@
                     Statement statement = null;
                     ResultSet resultSet = null;
 
+                    Bruker loggedInUser = (Bruker) session.getAttribute("loginUser");
+                    String currentUserEmail = loggedInUser.getEmail();
+
                     String NyttPassord = request.getParameter("NyttPassord");
 
                     connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
                     statement = connection.createStatement();
 
-                    String sql = "UPDATE Bruker SET password = '" + NyttPassord + "' WHERE email = 'tar'";
+                    String sql = "UPDATE Bruker SET password = '" + NyttPassord + "' WHERE email = '" + currentUserEmail + "'";
 
                     statement.executeUpdate(sql);
                 %>
                 <h3>Endring av passord vellykket!</h3>
-                <form action="UserPage.jsp">
+                <form action="UserPagePrivate.jsp">
                     <button class="button"><span>Returner</span></button>
                 </form>
                 <div style = "clear:both;"></div>

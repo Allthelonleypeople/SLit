@@ -277,14 +277,6 @@ h8 {
     text-align: center;
 }
 
-table {
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 2px solid black;
-}
-
 u1 {
     background-color: #c40c32;
     list-style-type: none;

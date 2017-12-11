@@ -67,8 +67,9 @@
                         <td width="250px"><%=resultSet.getString("lName")%>, <%=resultSet.getString("fName")%></td>
                         <td><table>
                                 <form method="post" action="UserPagePublic.jsp">
-                                    <input type="hidden" name="id" value=<%=resultSet.getString("email")%>>
-                                    <button name ="StudentListEmail" type="submit">Gå til</button> 
+                                    <input type="hidden" name="StudentListEmail" value=<%=resultSet.getString("email")%>>
+                                    <input type="submit" value="Gå til" style="width:100%">
+                                    <!-- <button name ="StudentListEmail" type="submit">Gå til</button> -->
                                 </form>
                             </table>
                         </td>

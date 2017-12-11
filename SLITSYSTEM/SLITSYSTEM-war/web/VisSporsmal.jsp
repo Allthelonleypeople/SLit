@@ -55,7 +55,7 @@
                     while (resultSet.next()) {
             %>
             <tr bgcolor="#ffffff">
-                <td width="150px"><%=resultSet.getString("navn")%></td>
+                <td width="150px"><%=resultSet.getString("loginUser")%></td>
                 <td width="150px"><%=resultSet.getString("kategori")%></td>
                 <td width="500px"><%=resultSet.getString("QuestionText")%></td>
                 <td align="center" bgcolor="#f1f4f9">
