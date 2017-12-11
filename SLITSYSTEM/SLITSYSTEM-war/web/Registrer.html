@@ -2,40 +2,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login form</title>
+        <title>Registrer deg</title>
         <link rel="stylesheet" href="css.css">
         <meta charset="UTF-8">
     </head>
     <body>
         <div class  ="row">
-            <div class ="column venstreheader">
-                <img src="C:\Users\Stian\Desktop\Notater\IS-202\Giropp-Development\EnterpriseApplication1-war\resources\UiA_logo1.jpg" alt="Uia logo" width="60" height="60">
-            </div>    
-            <div class ="column header left"></div>
-            <div class ="column header right"> 
-                <h2>Bruker</h2>
+            <div class ="column venstreheader forside">
             </div>
-        </div>
+            <div class ="column header forside"> 
+                <img src="C:\Users\Stian\Desktop\Notater\IS-202\SLit-Utvikling (1)\SLit-Utvikling\SLITSYSTEM\SLITSYSTEM-war\resources\Uia_logo_flyt.png" alt="Uia logo" width="90" height="90">
+                <div class ="column mellomrom">
+                    <h1>bom</h1> </div>
+                <h2>SLIT</h2> 
+                <h3>For IT-studenter</h3>
+            </div>
 
-        <div class ="venstre">
-        </div>
-
-        <form method="post" action="/SLITSYSTEM-war/NewBrukerServlet"> 
-            <br>
+            <div class ="venstre">
+            </div>
             <div class ="midt">
-                Email :<input type="text" name="email" /><br/>
-                Passord :<input type="password" name="passWord" /><br/>                
-                Fornavn :<input type ="text" name="fName" /> <br/>
-                Etternavn :<input type ="text" name="lName" /> <br/>
-                Brukertype :<br><select name="userType" required>
-                    <option value="">-velg type-</option>
-                    <option value="student">Student</option>
-                    <option value="teacher">Lærer</option>
-                    <option value="admin">Admin</option>
-                </select> <br> <br>
-                <input type="submit" value="Registrer"/> <br><br>
-            </div>
+                <form method="post" action="/SLITSYSTEM-war/NewBrukerServlet"> 
+                    Email :<input type="text" name="email" /><br/>
+                    Passord :<input type="password" name="passWord" /><br/>                
+                    Fornavn :<input type ="text" name="fName" /> <br/>
+                    Etternavn :<input type ="text" name="lName" /> <br/>
+                    Brukertype :<br><select name="userType" required>
+                        <option value="">-velg type-</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Lærer</option>
+                        <option value="admin">Admin</option>
+                    </select> <br> <br>
+                    <input type="submit" value="Registrer"/> <br><br>
 
-        </form>
+                    <a href="index.html">Tilbake</a>
+                </form>
+            </div>
+            <div class="bottomheader"></div>
+        </div>
     </body>
 </html>

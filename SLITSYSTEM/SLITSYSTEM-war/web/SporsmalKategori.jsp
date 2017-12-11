@@ -1,9 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Hovedmeny</title>
+        <title>Spørsmål kategori</title> 
+        <link rel="stylesheet" href="css.css">
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="css.css"/>
     </head>
     <body>
         <div class  ="row">
@@ -12,23 +12,23 @@
                 </a>
             </div>    
             <div class ="column header left">
-                <h2>Hovedmeny</h2>
+                <h2>Kategorier</h2>
             </div>
             <div class ="column header right"> 
                 <h2>Bruker</h2>
             </div>
 
-            <div class ="venstre">                  
+            <div class ="venstre">
                 <u1>
-                    <li><a class="active" href="Hovedmeny.jsp">Hovedside</a></li>
+                    <li><a href="Hovedmeny.jsp">Hovedside</a></li>
                     <li><a href="Moduler.jsp">Moduler</a></li>
                     <li><a href="Forum">Forum</a></li>
                     <li><a href="Blog.jsp">Blogg</a></li>                
                 </u1>
             </div>
 
-            <div class="midt"> 
-                <h2>Velkommen til hovedsiden for studenter</h2>
+            <div class="midt">
+
             </div>
             <div class="bottomheader"></div>
         </div>

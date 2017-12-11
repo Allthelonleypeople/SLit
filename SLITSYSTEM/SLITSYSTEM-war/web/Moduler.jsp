@@ -12,7 +12,7 @@
                 </a>
             </div>    
             <div class ="column header left">
-                <h2>Hovedmeny</h2>
+                <h2>Moduler</h2>
             </div>
             <div class ="column header right"> 
                 <h2>Bruker</h2>
@@ -20,15 +20,21 @@
 
             <div class ="venstre">                  
                 <u1>
-                    <li><a class="active" href="Hovedmeny.jsp">Hovedside</a></li>
-                    <li><a href="Moduler.jsp">Moduler</a></li>
+                    <li><a href="Hovedmeny.jsp">Hovedside</a></li>
+                    <li><a class="active" href="Moduler.jsp">Moduler</a></li>
                     <li><a href="Forum">Forum</a></li>
                     <li><a href="Blog.jsp">Blogg</a></li>                
                 </u1>
             </div>
 
-            <div class="midt"> 
-                <h2>Velkommen til hovedsiden for studenter</h2>
+            <div class="midt">  
+                <form action="ModuleListe.jsp">
+                    <button class="button"><span>Se moduler </span></button>
+                </form>
+                <br><br><br>
+                <form action="Innlevering.jsp">
+                    <button class="button"><span>Lever modul </span></button>
+                </form>
             </div>
             <div class="bottomheader"></div>
         </div>

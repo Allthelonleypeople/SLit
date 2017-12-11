@@ -6,7 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
-    <head>
+    <head
         <title>Finn QuestionID</title>
         <link rel="stylesheet" href="css.css">
     </head>
@@ -18,7 +18,7 @@
                 </a>
             </div>    
             <div class ="column header left">
-                <h2>Valgt spørsmål</h2>
+                <h2>Valgt modul</h2>
             </div>
             <div class ="column header right"> 
                 <h2>Bruker</h2>
@@ -53,37 +53,39 @@
 
                     connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
                     statement = connection.createStatement();
-                    String sql = "SELECT * FROM is_202.questions where QuestionID = '" + id + "'";
+                    String sql = "SELECT * FROM is_202.ModulOppgave where ModuleOppgaveID = '" + id + "'";
 
                     resultSet = statement.executeQuery(sql);
                     if (!resultSet.next()) {
-                        out.println("Kunne ikke finne spørsmålet<br><br>");
-                        out.println("<a href=\"VisSporsmal.jsp\">Prøv igjen</a>");
+                        out.println("Kunne ikke finne moodulen<br><br>");
+                        out.println("<a href=\"ModuleListe.jsp\">Prøv igjen</a>");
                     } else {
                 %>
                 <table align="left" cellpadding="5" cellspacing="5" border="1" bgcolor="#c40c32">
                     <tr bgcolor="#ffffff">
-                        <th>Navn</th>
-                        <th>Kategori</th>
-                        <th>Spørsmål</th>
+                        <th>Oppgavenummer</th>
+                        <th>Oppgave</th>
+                        <th>Kriterier</th>
+                        <th>Deadline</th>
                     </tr>
                     <tr bgcolor="ffffff">
-                        <td width="100"> <%= resultSet.getString("navn")%> </td>
-                        <td width="100"> <%= resultSet.getString("kategori")%> </td>
-                        <td width="498"> <%= resultSet.getString("QuestionText")%> </td>
+                        <td width="100"> <%= resultSet.getString("ModuleOppgaveID")%> </td>
+                        <td width="100"> <%= resultSet.getString("task")%> </td>
+                        <td width="100"> <%= resultSet.getString("Criterias")%> </td>
+                        <td width="100"> <%= resultSet.getString("Deadline")%> </td>
                     </tr>
                 </table>
                 <br>
                 <%
                     }
                 %>
-                <form method="post" action="/SLITSYSTEM-war/NewCommentServlet">
+                <form method="post" action="/SLITSYSTEM-war/OppgaveServlet">
                     <div style = "clear:both;"></div>
                     <br>
-                    <u2>Kommentar:</u2> <br>        
+                    <u2>Oppgavenummer:</u2> <br>        
                     <textarea style="resize:none" name="QuestionComment" rows="10" cols="70"></textarea> <br><br>
                     <u2>Navn:</u2> <br>
-                    <input type="text" name="KommentarNavn">
+                    <input type="text" name="KommentarNavn"
                            <br>
                     <input type="hidden" name="QuestionID" value=<%= resultSet.getString("QuestionID")%>> <br>
                     <input type="submit" value="Legg igjen kommentar">

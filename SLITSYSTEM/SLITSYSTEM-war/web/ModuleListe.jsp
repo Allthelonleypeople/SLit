@@ -9,69 +9,94 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 
-<%
-    String id = request.getParameter("userId");
-    String driverName = "com.mysql.jdbc.Driver";
-    String connectionUrl = "jdbc:mysql://localhost:3306/";
-    String dbName = "IS202";
-    String userId = "root";
-    String password = "rrs12345";
+<html>
+    <head>
+        <title>Innlevering</title>
+        <link rel="stylesheet" href="css.css">
+    </head>
+    <body>
+        <div class  ="row">
+            <div class ="column venstreheader">
+                <a href="Hovedmeny.jsp"> <img src="C:\Users\Stian\Desktop\Notater\IS-202\SLit-Utvikling\SLITSYSTEM\SLITSYSTEM-war\resources\UiA_logo1.jpg" alt="Uia logo" width="60" height="60">
+                </a>
+            </div>    
+            <div class ="column header left">
+                <h2>Moduloversikt</h2>
+            </div>
+            <div class ="column header right"> 
+                <h2>Bruker</h2>
+            </div>
 
-    try {
-        Class.forName(driverName);
-    } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-    }
+            <div class ="venstre">                  
+                <u1>
+                    <li><a href="Hovedmeny.jsp">Hovedside</a></li>
+                    <li><a href="Moduler.jsp">Moduler</a></li>
+                    <li><a href="Forum">Forum</a></li>
+                    <li><a href="Blog.jsp">Blogg</a></li>                
+                </u1>
+            </div>
 
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
-%>
-<h2 align="center"><font><strong>Liste over modulene i faget</strong></font></h2>
-<table align="center" cellpadding="5" cellspacing="5" border="1">
-    <tr>
+            <div class="midt">  
+                <%
+                    String id = request.getParameter("userId");
+                    String driverName = "com.mysql.jdbc.Driver";
+                    String connectionUrl = "jdbc:mysql://localhost:3306/";
+                    String dbName = "IS202";
+                    String userId = "root";
+                    String password = "root";
 
-    </tr>
-    <tr bgcolor="#FF123">
+                    try {
+                        Class.forName(driverName);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
 
-        <td><b>Oppgavenummer</b></td>
-        <td><b>Oppgave</b></td>
-        <td><b>Kriterier</b></td>
-        <td><b>Deadline</b></td>
-    </tr>
-    <%
-        try {
-            connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-            statement = connection.createStatement();
-            String sql = "SELECT * FROM ModuleOppgave";
+                    Connection connection = null;
+                    Statement statement = null;
+                    ResultSet resultSet = null;
+                %>
+                <table align="left" cellpadding="5" cellspacing="5" border="1">
+                    <tr>
 
-            resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-    %>
-    <tr bgcolor="#FF888">
+                    </tr>
+                    <tr bgcolor="#FF123">
 
-        <td><%=resultSet.getString("ModuleOppgaveID")%></td>
-        <td><%=resultSet.getString("task")%></td>
-        <td><%=resultSet.getString("Criterias")%></td>
-        <td><%=resultSet.getString("Deadline")%></td>
-        <form method="post" action="">
-        <input type="hidden" name="id" value=<%=resultSet.getString("ModuleOppgaveID")%>>
-        <td><button name ="StudentKnapp" type="submit">Modulside</button> </td>
+                        <td><b>Oppgavenummer</b></td>
+                        <td><b>Oppgave</b></td>
+                        <td><b>Kriterier</b></td>
+                        <td><b>Deadline</b></td>
+                    </tr>
+                    <%
+                        try {
+                            connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
+                            statement = connection.createStatement();
+                            String sql = "SELECT * FROM ModuleOppgave";
 
-        </tr>
+                            resultSet = statement.executeQuery(sql);
+                            while (resultSet.next()) {
+                    %>
+                    <tr bgcolor="#ffffff">
 
-        <%
-                }
+                        <td width="100px"><%=resultSet.getString("ModuleOppgaveID")%></td>
+                        <td width="100px"><%=resultSet.getString("task")%></td>
+                        <td width="100px"><%=resultSet.getString("Criterias")%></td>
+                        <td width="100px"><%=resultSet.getString("Deadline")%></td>
+                    <form method="post" action="FinnMID.jsp">
+                        <input type="hidden" name="id" value=<%=resultSet.getString("ModuleOppgaveID")%>>
+                        <td><button name ="StudentKnapp" type="submit">Modulside</button> </td>
+                    </form>
+                        </tr>
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        %>
-</table>
+                        <%
+                                }
 
-<a href="NewModule.jsp">Opprett ny modul</a> <br><br>
-<a href="giTilbakemelding.jsp">Gi tilbakemelding</a><br><br>
-
-<a href="lesTilbakemeldinger.jsp">les tilbakemelding</a><a <br><br>
-    <a href="skrivModuler.jsp">teste litt</a>
-    <a href="studentList.jsp">Studentlistet</a>
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
+                </table>
+            </div>
+            <div class="bottomheader"></div>
+        </div>
+    </body>
+</html>

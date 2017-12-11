@@ -17,32 +17,20 @@
             <div class ="column header right"> 
                 <h2>Lærer</h2>
             </div>
-        </div>
 
-        <div class ="venstre">
-        </div>
+            <div class ="venstre">
+                <u1>
+                    <li><a href="Hovedmeny.jsp">Hovedside</a></li>
+                    <li><a href="Moduler.jsp">Moduler</a></li>
+                    <li><a href="Forum">Forum</a></li>
+                    <li><a href="Blog.jsp">Blogg</a></li>                
+                </u1>
+            </div>
 
-        <div class="midt">
-            <form action="">
-                <button class="button"><span>Se moduler </span></button>
-            </form>
-
-            <form action="NewModule.jsp">
-                <button class="button"><span>Opprett modul </span></button>
-            </form>
-            
-            <form action="">
-                <button class="button"><span>Lever modul </span></button>
-            </form>
-
-            <form action="Forum">
-                <button class="button"><span>Forum </span></button>
-            </form>
-
-            <form action="Blog.jsp">
-                <button class="button"><span>Blogg </span></button>
-            </form>
-            
+            <div class="midt">
+                <h2>Velkommen til hovedsiden for lærere</h2>         
+            </div>
+            <div class="bottomheader"></div>
         </div>
     </body>
 </html>
