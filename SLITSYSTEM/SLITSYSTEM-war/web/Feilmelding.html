@@ -22,16 +22,22 @@
         <div class ="venstre">
         </div>
         <div class="midt">
-            <form action="/SLITSYSTEM-war/LoginServlet" method="post">
+            <form action="/SLITSYSTEM-war/StudentLoginServlet" method="post">
+
+
                 Email:  <input name="email" type="text" id="email" autofocus><br>
 
                 Passord: <input name="password" type="password" id="password"><br>
 
                 <input type="submit" value="Logg inn" onclick="myFunction()"><br> 
             </form>
-            <a href="Registrer.html">Registrer deg ved å klikke her</a> <br><br>                
+            <a href="Registrer.html">Registrer deg ved å klikke her</a> <br><br>                     
             <a href="index_nightmode.html">Nightmode</a>
 
+            <div class="alert" id="error">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span>
+                <strong>Feil!</strong> Brukernavn eller passord er feil.
+            </div> 
         </div>
     </body>
 </html>
