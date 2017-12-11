@@ -46,7 +46,7 @@
 </form>
 
 <%
-}else {
+} else {
 %>
 
 <body>
@@ -86,6 +86,11 @@
                         <td width="300" alignt="right"> <%= resultSet.getString("Description")%> </td>
                     </tr>
                 </table>
+                <form method="post" action="BlogPublic.jsp">
+                    <input type="hidden" name="userBlog" value="<%= resultSet.getString("UserID")%>">
+                    <div style = "clear:both;"></div> <br>
+                    <input type="submit" value="Blog">
+                </form>
             </div>
             <div style = "clear:both;"></div>
 
