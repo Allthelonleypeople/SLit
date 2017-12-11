@@ -1,6 +1,7 @@
-package Forum;
+package Blog;
 
 import javax.ejb.EJB;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,46 +9,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import Management.QuestionManagerLocal;
+import Management.PostManagerLocal;
 import javax.servlet.http.HttpSession;
 import users.Bruker;
 
-@WebServlet("NewQuestionServlet")
-public class NewQuestionServlet extends HttpServlet {
+@WebServlet(name = "NewPostServlet", urlPatterns = {"/NewPostServlet"})
+public class NewPostServlet extends HttpServlet {
 
     @EJB
-    QuestionManagerLocal manager;
+    PostManagerLocal manager;
 
-    private void newQuestion(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void newPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        String kategori = request.getParameter("kategori");
-        String QuestionText = request.getParameter("QuestionText");
+        String tittel = request.getParameter("tittel");
+        String innhold = request.getParameter("innhold");
         
         HttpSession session = request.getSession();
         Bruker loginUser = (Bruker) session.getAttribute("loginUser");
         String currentUserEmail = loginUser.getEmail();
 
-        Questions q = new Questions(currentUserEmail, kategori,  QuestionText);
-        if (manager.saveQuestion(q) == true) {
-            out.print("Ditt spørsmål har nå blitt lagret!");
-            out.print("Du vil nå bli videresendt til forum-siden");
-            response.sendRedirect("/SLITSYSTEM-war/Forum");
-        } else if (manager.saveQuestion(q) == false) {
-            out.print("Spørsmålet ble ikke lagret, prøv igjen..");
+        Poster p = new Poster(currentUserEmail, tittel, innhold);
+        if (manager.savePost(p) == true) {
+            out.print("Din post har blitt lagret!");
+            out.print("Du vil nå bli sendt tilbake til bloggen");
+            response.sendRedirect("Blog.jsp");
+        } else if (manager.savePost(p) == false) {
+            out.print("Posten ble ikke algret, prøv igjen..");
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        newQuestion(request, response);
+        newPost(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        newQuestion(request, response);
+        newPost(request, response);
     }
 }
