@@ -42,6 +42,7 @@
             <form action="Blog.jsp">
                 <button class="button"><span>Blogg </span></button>
             </form>
+            
         </div>
     </body>
 </html>

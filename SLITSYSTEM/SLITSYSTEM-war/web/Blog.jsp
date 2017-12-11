@@ -1,4 +1,4 @@
-<%@page import="java.sql.DriverManager"%>
+ <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -27,8 +27,8 @@
                 String connectionUrl = "jdbc:mysql://localhost:3306/";
 
                 String dbName = "is_202";
-                String userId = "StianSim97";
-                String password = "Nu3dfMz5s";
+                String userId = "root";
+                String password = "tH88jbdz";
 
                 try {
                     Class.forName(driverName);

@@ -23,11 +23,11 @@
         </div>
 
         <div class="midt">            
-            <form action="">
+            <form action="ModuleListe.jsp">
                 <button class="button"><span>Se moduler </span></button>
             </form>
 
-            <form action="">
+            <form action="Uploaded.html">
                 <button class="button"><span>Lever modul </span></button>
             </form>
 
@@ -38,6 +38,10 @@
             <form action="Blog.jsp">
                 <button class="button"><span>Blogg </span></button>
             </form>
+            
+            <a href="Uploaded.html">Upload</a> <br><br>
+            <a href="Innlevering.jsp">Leverte oppgaver</a> <br><br>
+            <a href="giTilbakemelding.jsp">Tilbakemelding</a>
         </div>
     </body>
 </html>

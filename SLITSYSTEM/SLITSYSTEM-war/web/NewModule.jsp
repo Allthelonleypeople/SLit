@@ -1,6 +1,5 @@
 <%@ page import="users.Bruker" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Bruker bruker = (Bruker) session.getAttribute("bruker");%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,14 +9,27 @@
     <main>     
         
      <form method="post" action="/SLITSYSTEM-war/newOppgaveServlet"  id="newM" accept-charset="UTF-8">
-        <label><input type="radio" name="ModuleOppgave" value="1"> Modul 1</label><br>
-        <label><input type="radio" name="ModuleOppgave" value="2"> Modul 2</label><br>
-        <label><input type="radio" name="ModuleOppgave" value="3"> Modul 3</label><br>
-        <label><input type="radio" name="ModuleOppgave" value="4"> Modul 4</label><br>
-        <label><input type="radio" name="ModuleOppgave" value="5"> Modul 5</label><br>
+         <select name="ModuleOppgave">
+             <option> -Velg modul-</option>
+             <option  name="ModuleOppgave" value="1"> Modul 1</option>
+             <option  name="ModuleOppgave" value="2"> Modul 2</option>
+             <option  name="ModuleOppgave" value="3"> Modul 3</option><br>
+             <option  name="ModuleOppgave" value="4"> Modul 4</option><br>
+             <option  name="ModuleOppgave" value="5"> Modul 5</option><br>
+             <option  name="ModuleOppgave" value="6"> Modul 6</option><br>
+             <option  name="ModuleOppgave" value="7"> Modul 7</option><br>
+             <option  name="ModuleOppgave" value="8"> Modul 8</option><br>
+             <option  name="ModuleOppgave" value="9"> Modul 9</option><br>
+             <option  name="ModuleOppgave" value="10"> Modul 10</option><br>
+     
+        </select>
+        
+        
 
         <p>${errorMessage}</p>
         <c:remove var="errorMessage" scope="session"/>
+        
+        
     </form>
           <div>
         Oppgave: <br>

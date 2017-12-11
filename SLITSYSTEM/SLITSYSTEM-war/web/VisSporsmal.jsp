@@ -27,7 +27,7 @@
 
         String dbName = "is_202";
         String userId = "root";
-        String password = "root";
+        String password = "tH88jbdz";
 
         try {
             Class.forName(driverName);
@@ -49,13 +49,13 @@
             try {
                 connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
                 statement = connection.createStatement();
-                String sql = "SELECT * FROM is_202.questions order by kategori, QuestionID";
+                String sql = "SELECT * FROM is_202.questions order by QuestionID";
 
                 resultSet = statement.executeQuery(sql);
                 while (resultSet.next()) {
         %>
         <tr bgcolor="#ffffff">
-            <td width="150px"><%=resultSet.getString("navn")%></td>
+            <td width="150px"><%=resultSet.getString("loginUser")%></td>
             <td width="150px"><%=resultSet.getString("kategori")%></td>
             <td width="500px"><%=resultSet.getString("QuestionText")%></td>
             <td><table>

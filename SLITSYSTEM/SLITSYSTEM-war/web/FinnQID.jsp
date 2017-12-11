@@ -32,7 +32,7 @@
                 String connectionUrl = "jdbc:mysql://localhost:3306/";
                 String dbName = "is_202";
                 String userId = "root";
-                String password = "root";
+                String password = "tH88jbdz";
 
                 try {
                     Class.forName(driverName);
@@ -64,7 +64,7 @@
             <th>Spørsmål</th>
             </tr>
             <tr bgcolor="ffffff">
-                <td width="100"> <%= resultSet.getString("navn")%> </td>
+                <td width="100"> <%= resultSet.getString("loginUser")%> </td>
                 <td width="100"> <%= resultSet.getString("kategori")%> </td>
                 <td width="498"> <%= resultSet.getString("QuestionText")%> </td>
             </tr>

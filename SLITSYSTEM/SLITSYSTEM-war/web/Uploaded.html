@@ -9,11 +9,11 @@
 <body>
     <center>
         <h1>File Upload to Database Demo</h1>
-        <form method="post" action="uploadServlet" enctype="multipart/form-data">
+        <form method="post" action="upload" enctype="multipart/form-data">
             <table border="0">
                 
                 <td>Title: </td>
-                <td><input type="text" name="Title" size="50"/></td>
+                <td><input type="text" name="title" size="50"/></td>
                 <br><br>
               
                 <td>Comment: </td>
@@ -22,11 +22,15 @@
                
                 <tr>
                     <td>Innlevering: </td>
-                    <td><input type="file" accept=" .doc, .txt, .jar, .docx" name="file" size="50"/></td>
+                    <td><input type="file" accept=" .doc, .txt, .jar, .docx, .zip" name="contents" size="50"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <input type="submit" value="Save">
+                        
+                        
+                        
+                        
                     </td>
                 </tr>
             </table>
