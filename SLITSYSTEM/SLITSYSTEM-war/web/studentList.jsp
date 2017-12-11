@@ -19,7 +19,7 @@
                 <a href="Hovedmeny.jsp"> <img src="C:\Users\Stian\Desktop\Notater\IS-202\SLit-Utvikling\SLITSYSTEM\SLITSYSTEM-war\resources\UiA_logo1.jpg" alt="Uia logo" width="60" height="60">
                 </a>  
             </div>
-            <div class ="column header left"><h2>Spørsmål</h2></div>
+            <div class ="column header left"><h2>Studentliste</h2></div>
             <div class ="column header right"><h2>Bruker</h2></div>      
             <div class="venstre">
                 <u1>
@@ -34,7 +34,7 @@
                     String id = request.getParameter("userId");
                     String driverName = "com.mysql.jdbc.Driver";
                     String connectionUrl = "jdbc:mysql://localhost:3306/";
-                    String dbName = "IS202";
+                    String dbName = "IS_202";
                     String userId = "root";
                     String password = "root";
 
@@ -48,15 +48,10 @@
                     Statement statement = null;
                     ResultSet resultSet = null;
                 %>
-                <table align="left" cellpadding="5" cellspacing="5" border="1">
-                    <tr>
-
-                    </tr>
-                    <tr>
-
-                        <td><b>Epost</b></td>
-                        <td><b>Fornavn</b></td>
-                        <td><b>Etternavn</b></td>
+        <table align="left" cellpadding="5" cellspacing="5" cellpadding="5" border="0" bgcolor="#f1f4f9" border-collapse="collapse">
+            <tr bgcolor="#ffffff">
+                        <th width="250px">Epost</th>
+                        <th width="250px">Navn</th>
                     </tr>
                     <%
                         try {
@@ -67,22 +62,24 @@
                             resultSet = statement.executeQuery(sql);
                             while (resultSet.next()) {
                     %>
-                    <tr>
-                        <td><%=resultSet.getString("email")%></td>
-                        <td><%=resultSet.getString("fName")%></td>
-                        <td><%=resultSet.getString("lName")%></td>
-                    <form method="post" action="studentList.jsp">
-                        <input type="hidden" name="id" value=<%=resultSet.getString("email")%>>
-                        <button name ="StudentKnapp" type="submit">Studentside</button> 
-                        </tr>
-
-                        <%
-                                }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                    <tr bgcolor="#ffffff">
+                        <td width="250px"><%=resultSet.getString("email")%></td>
+                        <td width="250px"><%=resultSet.getString("lName")%>, <%=resultSet.getString("fName")%></td>
+                        <td><table>
+                                <form method="post" action="UserPagePublic.jsp">
+                                    <input type="hidden" name="id" value=<%=resultSet.getString("email")%>>
+                                    <button name ="StudentListEmail" type="submit">Gå til</button> 
+                                </form>
+                            </table>
+                        </td>
+                    </tr>
+                    <%
                             }
-                        %>
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    %>
                 </table>
             </div>
             <div class="bottomheader"></div>
