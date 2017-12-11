@@ -13,7 +13,8 @@ public class UserPage implements Serializable {
     private String UserID;
     @Column
     private String Description;
-
+        
+    
     public UserPage(String UserID, String Description) {
         this.UserID = UserID;
         this.Description = Description;

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import Management.UserPageManagerLocal;
+import javax.servlet.http.HttpSession;
+import users.Bruker;
 
 @WebServlet(name = "NewUserPageServlet", urlPatterns = {"/NewUserPageServlet"})
 public class NewUserPageServlet extends HttpServlet {
