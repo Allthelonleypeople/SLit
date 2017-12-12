@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
  *
+ * An interface which can be used for storing, 
+ * updating and retriving data in a database.
  * @author sindrethompson
  */
 @Local

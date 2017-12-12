@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *Impliments the interface DeliveryManagerLocal, 
+ * which allows storing and updating of data in a database.
  * @author krish
  */
 @Stateless
@@ -17,15 +18,25 @@ public class DeliveryManagerBean implements DeliveryManagerLocal {
 
     @PersistenceContext
     private EntityManager em;
-
+/**
+ * 
+ */
     public DeliveryManagerBean(){
     }
-
+/**
+ * 
+ * @param id
+ * @return 
+ */
     @Override
     public Delivery getDelivery(int id) {
         return em.find(Delivery.class, id);
     }
-
+/**
+ * 
+ * @param delivery
+ * @return 
+ */
     @Override
     public boolean saveDelivery(Delivery delivery) {
         Delivery existing = getDelivery(delivery.getDelivery_ID());
@@ -38,7 +49,14 @@ public class DeliveryManagerBean implements DeliveryManagerLocal {
         return true;
     }
    
-
+/**
+ * 
+ * @param delivery
+ * @param request
+ * @param response
+ * @return
+ * @throws NullPointerException 
+ */
     @Override
     public boolean updateDelivery(Delivery delivery, HttpServletRequest request, HttpServletResponse response) throws NullPointerException {
         Delivery existing = getDelivery(delivery.getDelivery_ID());
