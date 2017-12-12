@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * A servlet that retrieves a file from MySQL database and lets the client
  * downloads the file.
- * @author www.codejava.net
+ * @author krish
  */
 @WebServlet("/DownloadServlet")
 public class Download extends HttpServlet {
@@ -30,9 +30,9 @@ public class Download extends HttpServlet {
     private static final int BUFFER_SIZE = 4096;   
      
     // database connection settings
-    private String dbURL = "jdbc:mysql://localhost:3306/IS_202?autoReconnect=true&useSSL=false";
-    private String dbUser = "root";
-    private String dbPass = "root";
+    private final String dbURL = "jdbc:mysql://localhost:3306/IS_202?autoReconnect=true&useSSL=false";
+    private final String dbUser = "root";
+    private final String dbPass = "root";
      
     @Override
     protected void doGet(HttpServletRequest request,
