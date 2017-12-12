@@ -36,7 +36,6 @@
                 String userId = "root";
                 String password = "root";
 
-                
                 String userBlog = request.getParameter("userBlog");
 
                 try {
@@ -57,7 +56,7 @@
                     connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
                     statement = connection.createStatement();
 
-                    String sql = "SELECT * FROM is_202.poster WHERE loginUser = '" + userBlog + "'";
+                    String sql = "SELECT * FROM is_202.poster WHERE loginUser = '" + userBlog + "' ORDER BY PostID DESC";
 
                     resultSet = statement.executeQuery(sql);
                     while (resultSet.next()) {
@@ -65,8 +64,9 @@
 
             <div class="boxelns">
                 <h7><b><%=resultSet.getString("tittel")%></b></h7><br>
-                <h8><%=resultSet.getString("innhold")%></h8><br>
+                <h8><%=resultSet.getString("innhold")%></h8>
             </div>
+            <div style = "clear:both;"></div><br>
 
             <%
                     }
